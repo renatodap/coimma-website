@@ -4,14 +4,25 @@ import Footer from "../components/Footer";
 import VideoPlayer from "../components/VideoPlayer";
 
 export default function HomePage() {
+  // Reusable component classes
+  const sectionContainer = "max-w-screen-xl mx-auto px-6 lg:px-8";
+  const sectionPadding = "py-20 lg:py-24";
+  const sectionTitle = "text-4xl lg:text-5xl font-bold tracking-tight text-balance leading-snug text-[#5c0a0a]";
+  const sectionSubtitle = "text-lg lg:text-xl text-gray-600 leading-relaxed text-balance";
+  const cardBase = "bg-white rounded-3xl p-8 lg:p-10 transition-all duration-300";
+  const cardShadow = "shadow-sm hover:shadow-md border border-gray-50";
+  const ctaButton = "inline-flex items-center justify-center px-8 py-3 bg-[#5c0a0a] text-white rounded-2xl font-semibold tracking-tight transition-all duration-200 hover:bg-[#4a0808] hover:scale-105";
+  const iconContainer = "w-14 h-14 rounded-2xl flex items-center justify-center mb-6";
+  const divider = "w-12 h-0.5 bg-[#5c0a0a] mx-auto";
+
   return (
     <>
       <Header />
-      <main className="bg-white text-coimma-text antialiased">
-        {/* 1. Full-width Institutional Video + Intro Text */}
-        <section className="relative bg-coimma-primary min-h-[60vh] flex flex-col justify-center items-center">
-          <div className="w-full max-w-screen-2xl mx-auto">
-            <div className="relative aspect-video w-full overflow-hidden">
+      <main className="bg-white text-[#333] antialiased">
+        {/* 1. Hero Section with Video */}
+        <section className="relative bg-[#5c0a0a] min-h-[70vh] flex items-center justify-center overflow-hidden">
+          <div className="w-full max-w-screen-2xl mx-auto px-6">
+            <div className="relative aspect-video w-full overflow-hidden rounded-3xl">
               <VideoPlayer
                 src="/video.mp4"
                 poster="/placeholder.jpg"
@@ -21,153 +32,181 @@ export default function HomePage() {
               />
             </div>
             <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
-              <h1 className="text-white text-4xl lg:text-5xl font-bold text-center drop-shadow-lg" style={{ textShadow: '0 2px 24px #5c0a0a' }}>
-                Olhar no Futuro: <br />
-                <span className="font-normal text-xl lg:text-2xl block mt-4">A COIMMA é respeitada pela longa história de excelência e inovação.</span>
-              </h1>
+              <div className="text-center max-w-4xl mx-auto px-6">
+                <h1 className="text-white text-5xl lg:text-6xl font-bold tracking-tight text-balance leading-tight mb-6">
+                  Olhar no Futuro
+                </h1>
+                <p className="text-white/90 text-xl lg:text-2xl font-light leading-relaxed text-balance">
+                  A COIMMA é respeitada pela longa história de excelência e inovação.
+                </p>
+              </div>
             </div>
           </div>
         </section>
 
         {/* 2. Destaques Section */}
-        <section className="bg-white py-24 lg:py-32">
-          <div className="max-w-screen-xl mx-auto px-6 lg:px-8">
-            <div className="text-center mb-20">
-              <h2 className="text-5xl font-bold mb-4 text-coimma-primary">Destaques</h2>
-              <div className="w-16 h-0.5 bg-coimma-primary mx-auto mb-4"></div>
+        <section className={`bg-gray-50/50 ${sectionPadding}`}>
+          <div className={sectionContainer}>
+            <div className="text-center mb-16">
+              <h2 className={`${sectionTitle} mb-4`}>Destaques</h2>
+              <div className={`${divider} mb-6`}></div>
+              <p className={sectionSubtitle}>Conheça nossos produtos mais inovadores</p>
             </div>
-            <div className="grid md:grid-cols-3 gap-10">
+            <div className="grid md:grid-cols-3 gap-8">
               {/* Megatron */}
-              <div className="bg-coimma-neutral rounded-2xl shadow-lg hover:shadow-2xl transition-all p-8 flex flex-col items-center">
-                <img src="/megatron.png" alt="Megatron" className="w-40 h-40 object-cover rounded-xl mb-6" />
-                <h3 className="text-2xl font-bold text-coimma-primary mb-2">Megatron</h3>
-                <p className="text-gray-700 mb-6 text-center">O Megatron é um tronco de contenção hidráulico inovador…</p>
-                <a href="/produtos/megatron" className="inline-block px-6 py-2 bg-coimma-primary text-white rounded-lg font-semibold hover:bg-coimma-accent transition-colors">Ver Produto</a>
-              </div>
+              <article className={`${cardBase} ${cardShadow} text-center group`}>
+                <div className="mb-8">
+                  <img src="/megatron.png" alt="Megatron" className="w-32 h-32 object-cover rounded-2xl mx-auto mb-6 group-hover:scale-105 transition-transform duration-300" />
+                </div>
+                <h3 className="text-2xl font-bold text-[#5c0a0a] mb-3 tracking-tight">Megatron</h3>
+                <p className="text-gray-600 mb-8 leading-relaxed text-balance">O Megatron é um tronco de contenção hidráulico inovador…</p>
+                <a href="/produtos/megatron" className={ctaButton}>Ver Produto</a>
+              </article>
               {/* Troncos Robust Plus */}
-              <div className="bg-white border border-coimma-neutral-alt rounded-2xl shadow-lg hover:shadow-2xl transition-all p-8 flex flex-col items-center">
-                <img src="/troncosrobustplus.png" alt="Troncos Robust Plus" className="w-40 h-40 object-cover rounded-xl mb-6" />
-                <h3 className="text-2xl font-bold text-coimma-primary mb-2">Troncos Robust Plus</h3>
-                <p className="text-gray-700 mb-6 text-center">LANÇAMENTO!!!</p>
-                <a href="/produtos/troncos-robust-plus" className="inline-block px-6 py-2 bg-coimma-primary text-white rounded-lg font-semibold hover:bg-coimma-accent transition-colors">Ver Produto</a>
-              </div>
+              <article className={`${cardBase} ${cardShadow} text-center group relative`}>
+                <div className="absolute -top-3 -right-3 bg-[#ffcc00] text-[#5c0a0a] px-4 py-2 rounded-full text-sm font-bold tracking-tight">
+                  NOVO
+                </div>
+                <div className="mb-8">
+                  <img src="/troncosrobustplus.png" alt="Troncos Robust Plus" className="w-32 h-32 object-cover rounded-2xl mx-auto mb-6 group-hover:scale-105 transition-transform duration-300" />
+                </div>
+                <h3 className="text-2xl font-bold text-[#5c0a0a] mb-3 tracking-tight">Troncos Robust Plus</h3>
+                <p className="text-gray-600 mb-8 leading-relaxed text-balance">LANÇAMENTO!!!</p>
+                <a href="/produtos/troncos-robust-plus" className={ctaButton}>Ver Produto</a>
+              </article>
               {/* Balanças Rodoviárias */}
-              <div className="bg-coimma-neutral rounded-2xl shadow-lg hover:shadow-2xl transition-all p-8 flex flex-col items-center">
-                <img src="/pesagemrodoviaria.png" alt="Balanças Rodoviárias" className="w-40 h-40 object-cover rounded-xl mb-6" />
-                <h3 className="text-2xl font-bold text-coimma-primary mb-2">Balanças Rodoviárias</h3>
-                <p className="text-gray-700 mb-6 text-center">Conheça as soluções da Coimma para pesagem rodoviária…</p>
-                <a href="/produtos/balancas-rodoviarias" className="inline-block px-6 py-2 bg-coimma-primary text-white rounded-lg font-semibold hover:bg-coimma-accent transition-colors">Ver Produto</a>
-              </div>
+              <article className={`${cardBase} ${cardShadow} text-center group`}>
+                <div className="mb-8">
+                  <img src="/pesagemrodoviaria.png" alt="Balanças Rodoviárias" className="w-32 h-32 object-cover rounded-2xl mx-auto mb-6 group-hover:scale-105 transition-transform duration-300" />
+                </div>
+                <h3 className="text-2xl font-bold text-[#5c0a0a] mb-3 tracking-tight">Balanças Rodoviárias</h3>
+                <p className="text-gray-600 mb-8 leading-relaxed text-balance">Conheça as soluções da Coimma para pesagem rodoviária…</p>
+                <a href="/produtos/balancas-rodoviarias" className={ctaButton}>Ver Produto</a>
+              </article>
             </div>
           </div>
         </section>
 
         {/* 3. Nossas Soluções Section */}
-        <section className="bg-coimma-neutral-alt py-24 lg:py-32">
-          <div className="max-w-screen-xl mx-auto px-6 lg:px-8">
-            <div className="text-center mb-20">
-              <h2 className="text-4xl lg:text-5xl font-bold tracking-tight text-balance mb-6 text-coimma-primary">
-                Nossas Soluções
-              </h2>
-              <div className="w-16 h-0.5 bg-coimma-primary mx-auto"></div>
+        <section className={`bg-white ${sectionPadding}`}>
+          <div className={sectionContainer}>
+            <div className="text-center mb-16">
+              <h2 className={`${sectionTitle} mb-4`}>Nossas Soluções</h2>
+              <div className={`${divider} mb-6`}></div>
+              <p className={sectionSubtitle}>Soluções completas para o agronegócio brasileiro</p>
             </div>
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
               {/* Pesagem Animal */}
-              <div className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all p-8 flex flex-col items-center">
-                <img src="/pesagemanimal.png" alt="Pesagem Animal" className="w-28 h-28 object-cover rounded-xl mb-6" />
-                <h3 className="text-xl font-bold text-coimma-primary mb-2">Pesagem Animal</h3>
-                <a href="/produtos/pesagem-animal" className="inline-block px-5 py-2 bg-coimma-primary text-white rounded-lg font-semibold hover:bg-coimma-accent transition-colors">Ver Solução</a>
-              </div>
+              <article className={`${cardBase} ${cardShadow} text-center group min-h-[280px] flex flex-col justify-between`}>
+                <div>
+                  <div className="mb-6">
+                    <img src="/pesagemanimal.png" alt="Pesagem Animal" className="w-20 h-20 object-cover rounded-2xl mx-auto group-hover:scale-110 transition-transform duration-300" />
+                  </div>
+                  <h3 className="text-xl font-bold text-[#5c0a0a] mb-4 tracking-tight">Pesagem Animal</h3>
+                </div>
+                <a href="/produtos/pesagem-animal" className="inline-flex items-center justify-center px-6 py-2.5 bg-[#5c0a0a] text-white rounded-xl font-medium tracking-tight transition-all duration-200 hover:bg-[#4a0808] text-sm">
+                  Ver Solução
+                </a>
+              </article>
               {/* Contenção Animal */}
-              <div className="bg-coimma-neutral rounded-2xl shadow-lg hover:shadow-2xl transition-all p-8 flex flex-col items-center">
-                <img src="/contencaoanimal.png" alt="Contenção Animal" className="w-28 h-28 object-cover rounded-xl mb-6" />
-                <h3 className="text-xl font-bold text-coimma-primary mb-2">Contenção Animal</h3>
-                <a href="/produtos/contencao-animal" className="inline-block px-5 py-2 bg-coimma-primary text-white rounded-lg font-semibold hover:bg-coimma-accent transition-colors">Ver Solução</a>
-              </div>
+              <article className={`${cardBase} ${cardShadow} text-center group min-h-[280px] flex flex-col justify-between`}>
+                <div>
+                  <div className="mb-6">
+                    <img src="/contencaoanimal.png" alt="Contenção Animal" className="w-20 h-20 object-cover rounded-2xl mx-auto group-hover:scale-110 transition-transform duration-300" />
+                  </div>
+                  <h3 className="text-xl font-bold text-[#5c0a0a] mb-4 tracking-tight">Contenção Animal</h3>
+                </div>
+                <a href="/produtos/contencao-animal" className="inline-flex items-center justify-center px-6 py-2.5 bg-[#5c0a0a] text-white rounded-xl font-medium tracking-tight transition-all duration-200 hover:bg-[#4a0808] text-sm">
+                  Ver Solução
+                </a>
+              </article>
               {/* Acessórios para Pecuária */}
-              <div className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all p-8 flex flex-col items-center">
-                <img src="/acessoriosparapecuaria.png" alt="Acessórios para Pecuária" className="w-28 h-28 object-cover rounded-xl mb-6" />
-                <h3 className="text-xl font-bold text-coimma-primary mb-2">Acessórios para Pecuária</h3>
-                <a href="/produtos/acessorios-pecuaria" className="inline-block px-5 py-2 bg-coimma-primary text-white rounded-lg font-semibold hover:bg-coimma-accent transition-colors">Ver Solução</a>
-              </div>
+              <article className={`${cardBase} ${cardShadow} text-center group min-h-[280px] flex flex-col justify-between`}>
+                <div>
+                  <div className="mb-6">
+                    <img src="/acessoriosparapecuaria.png" alt="Acessórios para Pecuária" className="w-20 h-20 object-cover rounded-2xl mx-auto group-hover:scale-110 transition-transform duration-300" />
+                  </div>
+                  <h3 className="text-xl font-bold text-[#5c0a0a] mb-4 tracking-tight">Acessórios para Pecuária</h3>
+                </div>
+                <a href="/produtos/acessorios-pecuaria" className="inline-flex items-center justify-center px-6 py-2.5 bg-[#5c0a0a] text-white rounded-xl font-medium tracking-tight transition-all duration-200 hover:bg-[#4a0808] text-sm">
+                  Ver Solução
+                </a>
+              </article>
               {/* Pesagem Rodoviária */}
-              <div className="bg-coimma-neutral rounded-2xl shadow-lg hover:shadow-2xl transition-all p-8 flex flex-col items-center">
-                <img src="/placeholder.jpg" alt="Pesagem Rodoviária" className="w-28 h-28 object-cover rounded-xl mb-6" />
-                <h3 className="text-xl font-bold text-coimma-primary mb-2">Pesagem Rodoviária</h3>
-                <a href="/produtos/pesagem-rodoviaria" className="inline-block px-5 py-2 bg-coimma-primary text-white rounded-lg font-semibold hover:bg-coimma-accent transition-colors">Ver Solução</a>
-              </div>
+              <article className={`${cardBase} ${cardShadow} text-center group min-h-[280px] flex flex-col justify-between`}>
+                <div>
+                  <div className="mb-6">
+                    <img src="/placeholder.jpg" alt="Pesagem Rodoviária" className="w-20 h-20 object-cover rounded-2xl mx-auto group-hover:scale-110 transition-transform duration-300" />
+                  </div>
+                  <h3 className="text-xl font-bold text-[#5c0a0a] mb-4 tracking-tight">Pesagem Rodoviária</h3>
+                </div>
+                <a href="/produtos/pesagem-rodoviaria" className="inline-flex items-center justify-center px-6 py-2.5 bg-[#5c0a0a] text-white rounded-xl font-medium tracking-tight transition-all duration-200 hover:bg-[#4a0808] text-sm">
+                  Ver Solução
+                </a>
+              </article>
             </div>
           </div>
         </section>
 
         {/* 4. Nossos Diferenciais Section */}
-        <section className="bg-coimma-accent bg-opacity-10 py-24 lg:py-32">
-          <div className="max-w-screen-xl mx-auto px-6 lg:px-8">
-            <div className="text-center mb-20">
-              <h2 className="text-4xl lg:text-5xl font-bold tracking-tight text-balance mb-6 text-coimma-primary">
-                Nossos Diferenciais
-              </h2>
-              <p className="text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
+        <section className={`bg-gray-50/30 ${sectionPadding}`}>
+          <div className={sectionContainer}>
+            <div className="text-center mb-16">
+              <h2 className={`${sectionTitle} mb-4`}>Nossos Diferenciais</h2>
+              <div className={`${divider} mb-6`}></div>
+              <p className={`${sectionSubtitle} max-w-2xl mx-auto`}>
                 70 anos construindo excelência no agronegócio brasileiro
               </p>
             </div>
 
-            <div className="grid md:grid-cols-2 gap-8 lg:gap-12">
-              <div className="group">
-                <div className="bg-white rounded-2xl p-8 lg:p-10 h-full shadow-sm hover:shadow-lg transition-all">
-                  <div className="w-12 h-12 bg-coimma-secondary bg-opacity-20 rounded-xl flex items-center justify-center mb-6">
-                    <svg className="w-6 h-6 text-coimma-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-                    </svg>
-                  </div>
-                  <h3 className="text-2xl font-bold mb-4 text-coimma-primary">Atendimento</h3>
-                  <p className="text-gray-600 leading-relaxed">
-                    A empresa prima pela qualidade dos seus produtos e por um atendimento diferenciado, do início ao fim do processo.
-                  </p>
+            <div className="grid md:grid-cols-2 gap-6 lg:gap-8">
+              <article className={`${cardBase} ${cardShadow} h-full`}>
+                <div className={`${iconContainer} bg-[#ffcc00]/10`}>
+                  <svg className="w-7 h-7 text-[#5c0a0a]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                  </svg>
                 </div>
-              </div>
+                <h3 className="text-2xl font-bold mb-4 text-[#5c0a0a] tracking-tight">Atendimento</h3>
+                <p className="text-gray-600 leading-relaxed text-balance">
+                  A empresa prima pela qualidade dos seus produtos e por um atendimento diferenciado, do início ao fim do processo.
+                </p>
+              </article>
 
-              <div className="group">
-                <div className="bg-white rounded-2xl p-8 lg:p-10 h-full shadow-sm hover:shadow-lg transition-all">
-                  <div className="w-12 h-12 bg-coimma-secondary bg-opacity-20 rounded-xl flex items-center justify-center mb-6">
-                    <svg className="w-6 h-6 text-coimma-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
-                    </svg>
-                  </div>
-                  <h3 className="text-2xl font-bold mb-4 text-coimma-primary">Líder de Mercado</h3>
-                  <p className="text-gray-600 leading-relaxed">
-                    Com 70 anos de trajetória, somos referência em troncos e balanças bovinas no Brasil, desenvolvendo soluções que escutam e atendem a voz do campo.
-                  </p>
+              <article className={`${cardBase} ${cardShadow} h-full`}>
+                <div className={`${iconContainer} bg-[#ffcc00]/10`}>
+                  <svg className="w-7 h-7 text-[#5c0a0a]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+                  </svg>
                 </div>
-              </div>
+                <h3 className="text-2xl font-bold mb-4 text-[#5c0a0a] tracking-tight">Líder de Mercado</h3>
+                <p className="text-gray-600 leading-relaxed text-balance">
+                  Com 70 anos de trajetória, somos referência em troncos e balanças bovinas no Brasil, desenvolvendo soluções que escutam e atendem a voz do campo.
+                </p>
+              </article>
 
-              <div className="group">
-                <div className="bg-white rounded-2xl p-8 lg:p-10 h-full shadow-sm hover:shadow-lg transition-all">
-                  <div className="w-12 h-12 bg-coimma-accent bg-opacity-20 rounded-xl flex items-center justify-center mb-6">
-                    <svg className="w-6 h-6 text-coimma-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
-                    </svg>
-                  </div>
-                  <h3 className="text-2xl font-bold mb-4">Frota Própria</h3>
-                  <p className="text-gray-600 leading-relaxed">
-                    Mais de 20 caminhões e equipe de montagem própria garantem entregas diretas e montagem técnica especializada.
-                  </p>
+              <article className={`${cardBase} ${cardShadow} h-full`}>
+                <div className={`${iconContainer} bg-[#ffcc00]/10`}>
+                  <svg className="w-7 h-7 text-[#5c0a0a]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
+                  </svg>
                 </div>
-              </div>
+                <h3 className="text-2xl font-bold mb-4 text-[#5c0a0a] tracking-tight">Frota Própria</h3>
+                <p className="text-gray-600 leading-relaxed text-balance">
+                  Mais de 20 caminhões e equipe de montagem própria garantem entregas diretas e montagem técnica especializada.
+                </p>
+              </article>
 
-              <div className="group">
-                <div className="bg-white rounded-2xl p-8 lg:p-10 h-full shadow-sm hover:shadow-lg transition-all">
-                  <div className="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center mb-6">
-                    <svg className="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                    </svg>
-                  </div>
-                  <h3 className="text-2xl font-bold mb-4">De olho no futuro</h3>
-                  <p className="text-gray-600 leading-relaxed">
-                    Parcerias com universidades e centros de pesquisa como a Embrapa nos colocam na vanguarda da inovação no setor pecuário.
-                  </p>
+              <article className={`${cardBase} ${cardShadow} h-full`}>
+                <div className={`${iconContainer} bg-[#ffcc00]/10`}>
+                  <svg className="w-7 h-7 text-[#5c0a0a]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                  </svg>
                 </div>
-              </div>
+                <h3 className="text-2xl font-bold mb-4 text-[#5c0a0a] tracking-tight">De olho no futuro</h3>
+                <p className="text-gray-600 leading-relaxed text-balance">
+                  Parcerias com universidades e centros de pesquisa como a Embrapa nos colocam na vanguarda da inovação no setor pecuário.
+                </p>
+              </article>
             </div>
           </div>
         </section>
