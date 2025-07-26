@@ -1,23 +1,25 @@
 // Header component for COIMMA website
+'use client';
+
+import Link from 'next/link';
+import { useState } from 'react';
+
 export default function Header() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const navigationItems = [
+    { name: 'Institucional', href: '/institucional' },
+    { name: 'Produtos', href: '/produtos' },
+    { name: 'Serviços', href: '/servicos' },
+    { name: 'Educacional', href: '/educacional' },
+    { name: 'Loja Virtual', href: '/loja' },
+  ];
+
   return (
-    <header className="w-full bg-white py-4 px-6 flex justify-between items-center">
-      <div className="flex items-center">
-        {/* Replace with actual logo */}
-        <div className="h-10 w-32 bg-gray-200 flex items-center justify-center">
-          <span className="font-bold text-xl">COIMMA</span>
-        </div>
-      </div>
-      <nav>
-        <ul className="flex space-x-6">
-          <li><a href="/institucional" className="hover:text-blue-600 font-medium">Institucional</a></li>
-          <li><a href="/produtos" className="hover:text-blue-600 font-medium">Produtos</a></li>
-          <li><a href="/servicos" className="hover:text-blue-600 font-medium">Serviços</a></li>
-          <li><a href="/educacional" className="hover:text-blue-600 font-medium">Educacional</a></li>
-          <li><a href="/loja" className="hover:text-blue-600 font-medium">Loja Virtual</a></li>
-          <li><a href="/contato" className="hover:text-blue-600 font-medium">Contato</a></li>
-        </ul>
-      </nav>
+    <header className="bg-coimma-primary flex items-center justify-center w-full" style={{height: '120px'}}>
+      <Link href="/" className="flex items-center justify-center w-full h-full">
+        <img src="/logo-coimma.png" alt="COIMMA Logo" className="h-28 md:h-32 object-contain mx-auto" style={{maxHeight: '100px'}} />
+      </Link>
     </header>
   );
 }
