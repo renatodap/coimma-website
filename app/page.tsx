@@ -1,19 +1,24 @@
+"use client";
 import React from "react";
+import { motion } from "framer-motion";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import VideoPlayer from "../components/VideoPlayer";
 
 export default function HomePage() {
   // Reusable component classes
-  const sectionContainer = "max-w-screen-xl mx-auto px-6 lg:px-8";
-  const sectionPadding = "py-20 lg:py-24";
-  const sectionTitle = "text-4xl lg:text-5xl font-bold tracking-tight text-balance leading-snug text-[#5c0a0a]";
-  const sectionSubtitle = "text-lg lg:text-xl text-gray-600 leading-relaxed text-balance";
-  const cardBase = "bg-white rounded-3xl p-8 lg:p-10 transition-all duration-300";
-  const cardShadow = "shadow-sm hover:shadow-md border border-gray-50";
-  const ctaButton = "inline-flex items-center justify-center px-8 py-3 bg-[#5c0a0a] text-white rounded-2xl font-semibold tracking-tight transition-all duration-200 hover:bg-[#4a0808] hover:scale-105";
-  const iconContainer = "w-14 h-14 rounded-2xl flex items-center justify-center mb-6";
+  const sectionContainer = "max-w-screen-xl mx-auto px-6";
+  const sectionPadding = "py-28";
+  const sectionTitle = "text-4xl lg:text-5xl font-bold tracking-tight text-balance leading-tight text-[#5c0a0a]";
+  const sectionSubtitle = "text-lg text-gray-600 leading-relaxed text-balance";
   const divider = "w-12 h-0.5 bg-[#5c0a0a] mx-auto";
+
+  // Animation variants
+  const fadeInUp = {
+    initial: { opacity: 0, y: 60 },
+    animate: { opacity: 1, y: 0 },
+    transition: { duration: 0.6, ease: "easeOut" }
+  };
 
   return (
     <>
@@ -45,7 +50,13 @@ export default function HomePage() {
         </section>
 
         {/* 2. Destaques Section */}
-        <section className={`bg-gray-50/50 ${sectionPadding}`}>
+        <motion.section 
+          className={`bg-gray-50/50 ${sectionPadding}`}
+          initial="initial"
+          whileInView="animate"
+          viewport={{ once: true }}
+          variants={fadeInUp}
+        >
           <div className={sectionContainer}>
             <div className="text-center mb-16">
               <h2 className={`${sectionTitle} mb-4`}>Destaques</h2>
@@ -54,41 +65,61 @@ export default function HomePage() {
             </div>
             <div className="grid md:grid-cols-3 gap-8">
               {/* Megatron */}
-              <article className={`${cardBase} ${cardShadow} text-center group`}>
-                <div className="mb-8">
-                  <img src="/megatron.png" alt="Megatron" className="w-32 h-32 object-cover rounded-2xl mx-auto mb-6 group-hover:scale-105 transition-transform duration-300" />
-                </div>
-                <h3 className="text-2xl font-bold text-[#5c0a0a] mb-3 tracking-tight">Megatron</h3>
-                <p className="text-gray-600 mb-8 leading-relaxed text-balance">O Megatron é um tronco de contenção hidráulico inovador…</p>
-                <a href="/produtos/megatron" className={ctaButton}>Ver Produto</a>
-              </article>
+              <a href="/produtos/megatron" className="group block">
+                <article className="relative overflow-hidden rounded-3xl shadow-md hover:shadow-lg transition-all duration-300 aspect-[4/3]">
+                  <img 
+                    src="/megatron.png" 
+                    alt="Megatron" 
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
+                  />
+                  <div className="absolute bottom-0 left-0 right-0 bg-white/95 backdrop-blur-sm p-6">
+                    <h3 className="text-xl font-bold text-[#5c0a0a] tracking-tight text-center">Megatron</h3>
+                  </div>
+                </article>
+              </a>
+              
               {/* Troncos Robust Plus */}
-              <article className={`${cardBase} ${cardShadow} text-center group relative`}>
-                <div className="absolute -top-3 -right-3 bg-[#ffcc00] text-[#5c0a0a] px-4 py-2 rounded-full text-sm font-bold tracking-tight">
+              <a href="/produtos/troncos-robust-plus" className="group block relative">
+                <div className="absolute -top-3 -right-3 bg-[#ffcc00] text-[#5c0a0a] px-4 py-2 rounded-full text-sm font-bold tracking-tight z-10">
                   NOVO
                 </div>
-                <div className="mb-8">
-                  <img src="/troncosrobustplus.png" alt="Troncos Robust Plus" className="w-32 h-32 object-cover rounded-2xl mx-auto mb-6 group-hover:scale-105 transition-transform duration-300" />
-                </div>
-                <h3 className="text-2xl font-bold text-[#5c0a0a] mb-3 tracking-tight">Troncos Robust Plus</h3>
-                <p className="text-gray-600 mb-8 leading-relaxed text-balance">LANÇAMENTO!!!</p>
-                <a href="/produtos/troncos-robust-plus" className={ctaButton}>Ver Produto</a>
-              </article>
+                <article className="relative overflow-hidden rounded-3xl shadow-md hover:shadow-lg transition-all duration-300 aspect-[4/3]">
+                  <img 
+                    src="/troncos-robust-plus.png" 
+                    alt="Troncos Robust Plus" 
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
+                  />
+                  <div className="absolute bottom-0 left-0 right-0 bg-white/95 backdrop-blur-sm p-6">
+                    <h3 className="text-xl font-bold text-[#5c0a0a] tracking-tight text-center">Troncos Robust Plus</h3>
+                  </div>
+                </article>
+              </a>
+              
               {/* Balanças Rodoviárias */}
-              <article className={`${cardBase} ${cardShadow} text-center group`}>
-                <div className="mb-8">
-                  <img src="/pesagemrodoviaria.png" alt="Balanças Rodoviárias" className="w-32 h-32 object-cover rounded-2xl mx-auto mb-6 group-hover:scale-105 transition-transform duration-300" />
-                </div>
-                <h3 className="text-2xl font-bold text-[#5c0a0a] mb-3 tracking-tight">Balanças Rodoviárias</h3>
-                <p className="text-gray-600 mb-8 leading-relaxed text-balance">Conheça as soluções da Coimma para pesagem rodoviária…</p>
-                <a href="/produtos/balancas-rodoviarias" className={ctaButton}>Ver Produto</a>
-              </article>
+              <a href="/produtos/balancas-rodoviarias" className="group block">
+                <article className="relative overflow-hidden rounded-3xl shadow-md hover:shadow-lg transition-all duration-300 aspect-[4/3]">
+                  <img 
+                    src="/balancas-rodoviarias.png" 
+                    alt="Balanças Rodoviárias" 
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
+                  />
+                  <div className="absolute bottom-0 left-0 right-0 bg-white/95 backdrop-blur-sm p-6">
+                    <h3 className="text-xl font-bold text-[#5c0a0a] tracking-tight text-center">Balanças Rodoviárias</h3>
+                  </div>
+                </article>
+              </a>
             </div>
           </div>
-        </section>
+        </motion.section>
 
         {/* 3. Nossas Soluções Section */}
-        <section className={`bg-white ${sectionPadding}`}>
+        <motion.section 
+          className={`bg-white ${sectionPadding}`}
+          initial="initial"
+          whileInView="animate"
+          viewport={{ once: true }}
+          variants={fadeInUp}
+        >
           <div className={sectionContainer}>
             <div className="text-center mb-16">
               <h2 className={`${sectionTitle} mb-4`}>Nossas Soluções</h2>
@@ -97,59 +128,69 @@ export default function HomePage() {
             </div>
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
               {/* Pesagem Animal */}
-              <article className={`${cardBase} ${cardShadow} text-center group min-h-[280px] flex flex-col justify-between`}>
-                <div>
-                  <div className="mb-6">
-                    <img src="/pesagemanimal.png" alt="Pesagem Animal" className="w-20 h-20 object-cover rounded-2xl mx-auto group-hover:scale-110 transition-transform duration-300" />
-                  </div>
-                  <h3 className="text-xl font-bold text-[#5c0a0a] mb-4 tracking-tight">Pesagem Animal</h3>
+              <article className="bg-gray-50/50 rounded-2xl p-8 text-center transition-all duration-300 hover:bg-gray-50">
+                <div className="w-10 h-10 mx-auto mb-6 text-[#5c0a0a]">
+                  <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" className="w-full h-full">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                  </svg>
                 </div>
-                <a href="/produtos/pesagem-animal" className="inline-flex items-center justify-center px-6 py-2.5 bg-[#5c0a0a] text-white rounded-xl font-medium tracking-tight transition-all duration-200 hover:bg-[#4a0808] text-sm">
+                <h3 className="text-lg font-semibold text-[#5c0a0a] mb-4 tracking-tight">Pesagem Animal</h3>
+                <a href="/produtos/pesagem-animal" className="text-sm text-[#5c0a0a] underline hover:opacity-80 transition-opacity">
                   Ver Solução
                 </a>
               </article>
+              
               {/* Contenção Animal */}
-              <article className={`${cardBase} ${cardShadow} text-center group min-h-[280px] flex flex-col justify-between`}>
-                <div>
-                  <div className="mb-6">
-                    <img src="/contencaoanimal.png" alt="Contenção Animal" className="w-20 h-20 object-cover rounded-2xl mx-auto group-hover:scale-110 transition-transform duration-300" />
-                  </div>
-                  <h3 className="text-xl font-bold text-[#5c0a0a] mb-4 tracking-tight">Contenção Animal</h3>
+              <article className="bg-gray-50/50 rounded-2xl p-8 text-center transition-all duration-300 hover:bg-gray-50">
+                <div className="w-10 h-10 mx-auto mb-6 text-[#5c0a0a]">
+                  <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" className="w-full h-full">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                  </svg>
                 </div>
-                <a href="/produtos/contencao-animal" className="inline-flex items-center justify-center px-6 py-2.5 bg-[#5c0a0a] text-white rounded-xl font-medium tracking-tight transition-all duration-200 hover:bg-[#4a0808] text-sm">
+                <h3 className="text-lg font-semibold text-[#5c0a0a] mb-4 tracking-tight">Contenção Animal</h3>
+                <a href="/produtos/contencao-animal" className="text-sm text-[#5c0a0a] underline hover:opacity-80 transition-opacity">
                   Ver Solução
                 </a>
               </article>
+              
               {/* Acessórios para Pecuária */}
-              <article className={`${cardBase} ${cardShadow} text-center group min-h-[280px] flex flex-col justify-between`}>
-                <div>
-                  <div className="mb-6">
-                    <img src="/acessoriosparapecuaria.png" alt="Acessórios para Pecuária" className="w-20 h-20 object-cover rounded-2xl mx-auto group-hover:scale-110 transition-transform duration-300" />
-                  </div>
-                  <h3 className="text-xl font-bold text-[#5c0a0a] mb-4 tracking-tight">Acessórios para Pecuária</h3>
+              <article className="bg-gray-50/50 rounded-2xl p-8 text-center transition-all duration-300 hover:bg-gray-50">
+                <div className="w-10 h-10 mx-auto mb-6 text-[#5c0a0a]">
+                  <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" className="w-full h-full">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                  </svg>
                 </div>
-                <a href="/produtos/acessorios-pecuaria" className="inline-flex items-center justify-center px-6 py-2.5 bg-[#5c0a0a] text-white rounded-xl font-medium tracking-tight transition-all duration-200 hover:bg-[#4a0808] text-sm">
+                <h3 className="text-lg font-semibold text-[#5c0a0a] mb-4 tracking-tight">Acessórios para Pecuária</h3>
+                <a href="/produtos/acessorios-pecuaria" className="text-sm text-[#5c0a0a] underline hover:opacity-80 transition-opacity">
                   Ver Solução
                 </a>
               </article>
+              
               {/* Pesagem Rodoviária */}
-              <article className={`${cardBase} ${cardShadow} text-center group min-h-[280px] flex flex-col justify-between`}>
-                <div>
-                  <div className="mb-6">
-                    <img src="/placeholder.jpg" alt="Pesagem Rodoviária" className="w-20 h-20 object-cover rounded-2xl mx-auto group-hover:scale-110 transition-transform duration-300" />
-                  </div>
-                  <h3 className="text-xl font-bold text-[#5c0a0a] mb-4 tracking-tight">Pesagem Rodoviária</h3>
+              <article className="bg-gray-50/50 rounded-2xl p-8 text-center transition-all duration-300 hover:bg-gray-50">
+                <div className="w-10 h-10 mx-auto mb-6 text-[#5c0a0a]">
+                  <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" className="w-full h-full">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
+                  </svg>
                 </div>
-                <a href="/produtos/pesagem-rodoviaria" className="inline-flex items-center justify-center px-6 py-2.5 bg-[#5c0a0a] text-white rounded-xl font-medium tracking-tight transition-all duration-200 hover:bg-[#4a0808] text-sm">
+                <h3 className="text-lg font-semibold text-[#5c0a0a] mb-4 tracking-tight">Pesagem Rodoviária</h3>
+                <a href="/produtos/pesagem-rodoviaria" className="text-sm text-[#5c0a0a] underline hover:opacity-80 transition-opacity">
                   Ver Solução
                 </a>
               </article>
             </div>
           </div>
-        </section>
+        </motion.section>
 
         {/* 4. Nossos Diferenciais Section */}
-        <section className={`bg-gray-50/30 ${sectionPadding}`}>
+        <motion.section 
+          className={`bg-gray-50 ${sectionPadding}`}
+          initial="initial"
+          whileInView="animate"
+          viewport={{ once: true }}
+          variants={fadeInUp}
+        >
           <div className={sectionContainer}>
             <div className="text-center mb-16">
               <h2 className={`${sectionTitle} mb-4`}>Nossos Diferenciais</h2>
@@ -159,148 +200,131 @@ export default function HomePage() {
               </p>
             </div>
 
-            <div className="grid md:grid-cols-2 gap-6 lg:gap-8">
-              <article className={`${cardBase} ${cardShadow} h-full`}>
-                <div className={`${iconContainer} bg-[#ffcc00]/10`}>
-                  <svg className="w-7 h-7 text-[#5c0a0a]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="grid md:grid-cols-2 gap-8">
+              <article className="bg-white rounded-2xl p-8 shadow-sm border border-gray-100">
+                <div className="w-12 h-12 bg-[#5c0a0a]/10 rounded-xl flex items-center justify-center mb-6">
+                  <svg className="w-6 h-6 text-[#5c0a0a]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                   </svg>
                 </div>
-                <h3 className="text-2xl font-bold mb-4 text-[#5c0a0a] tracking-tight">Atendimento</h3>
+                <h3 className="text-xl font-semibold mb-4 text-[#5c0a0a] tracking-tight">Atendimento</h3>
                 <p className="text-gray-600 leading-relaxed text-balance">
                   A empresa prima pela qualidade dos seus produtos e por um atendimento diferenciado, do início ao fim do processo.
                 </p>
               </article>
 
-              <article className={`${cardBase} ${cardShadow} h-full`}>
-                <div className={`${iconContainer} bg-[#ffcc00]/10`}>
-                  <svg className="w-7 h-7 text-[#5c0a0a]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <article className="bg-white rounded-2xl p-8 shadow-sm border border-gray-100">
+                <div className="w-12 h-12 bg-[#5c0a0a]/10 rounded-xl flex items-center justify-center mb-6">
+                  <svg className="w-6 h-6 text-[#5c0a0a]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
                   </svg>
                 </div>
-                <h3 className="text-2xl font-bold mb-4 text-[#5c0a0a] tracking-tight">Líder de Mercado</h3>
+                <h3 className="text-xl font-semibold mb-4 text-[#5c0a0a] tracking-tight">Líder de Mercado</h3>
                 <p className="text-gray-600 leading-relaxed text-balance">
                   Com 70 anos de trajetória, somos referência em troncos e balanças bovinas no Brasil, desenvolvendo soluções que escutam e atendem a voz do campo.
                 </p>
               </article>
 
-              <article className={`${cardBase} ${cardShadow} h-full`}>
-                <div className={`${iconContainer} bg-[#ffcc00]/10`}>
-                  <svg className="w-7 h-7 text-[#5c0a0a]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <article className="bg-white rounded-2xl p-8 shadow-sm border border-gray-100">
+                <div className="w-12 h-12 bg-[#5c0a0a]/10 rounded-xl flex items-center justify-center mb-6">
+                  <svg className="w-6 h-6 text-[#5c0a0a]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
                   </svg>
                 </div>
-                <h3 className="text-2xl font-bold mb-4 text-[#5c0a0a] tracking-tight">Frota Própria</h3>
+                <h3 className="text-xl font-semibold mb-4 text-[#5c0a0a] tracking-tight">Frota Própria</h3>
                 <p className="text-gray-600 leading-relaxed text-balance">
                   Mais de 20 caminhões e equipe de montagem própria garantem entregas diretas e montagem técnica especializada.
                 </p>
               </article>
 
-              <article className={`${cardBase} ${cardShadow} h-full`}>
-                <div className={`${iconContainer} bg-[#ffcc00]/10`}>
-                  <svg className="w-7 h-7 text-[#5c0a0a]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <article className="bg-white rounded-2xl p-8 shadow-sm border border-gray-100">
+                <div className="w-12 h-12 bg-[#5c0a0a]/10 rounded-xl flex items-center justify-center mb-6">
+                  <svg className="w-6 h-6 text-[#5c0a0a]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 10V3L4 14h7v7l9-11h-7z" />
                   </svg>
                 </div>
-                <h3 className="text-2xl font-bold mb-4 text-[#5c0a0a] tracking-tight">De olho no futuro</h3>
+                <h3 className="text-xl font-semibold mb-4 text-[#5c0a0a] tracking-tight">De olho no futuro</h3>
                 <p className="text-gray-600 leading-relaxed text-balance">
                   Parcerias com universidades e centros de pesquisa como a Embrapa nos colocam na vanguarda da inovação no setor pecuário.
                 </p>
               </article>
             </div>
           </div>
-        </section>
+        </motion.section>
 
-        {/* Testimonials Section */}
-        <section className="bg-white">
-          <div className="max-w-screen-xl mx-auto px-6 lg:px-8 py-24 lg:py-32">
-            <div className="text-center mb-20">
-              <h2 className="text-4xl lg:text-5xl font-bold tracking-tight mb-6">
-                Depoimentos
-              </h2>
-              <div className="w-16 h-0.5 bg-gray-900 mx-auto mb-6"></div>
-              <p className="text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
-                O que nossos clientes falam sobre a COIMMA
+        {/* 5. Depoimentos Section */}
+        <motion.section 
+          className={`bg-white ${sectionPadding}`}
+          initial="initial"
+          whileInView="animate"
+          viewport={{ once: true }}
+          variants={fadeInUp}
+        >
+          <div className={sectionContainer}>
+            <div className="text-center mb-16">
+              <h2 className={`${sectionTitle} mb-4`}>Depoimentos</h2>
+              <div className={`${divider} mb-6`}></div>
+              <p className={`${sectionSubtitle} max-w-2xl mx-auto`}>
+                O que nossos clientes dizem sobre nossos produtos e serviços
               </p>
             </div>
 
-            <div className="grid lg:grid-cols-3 gap-8">
-              <blockquote className="bg-gray-50 rounded-2xl p-8 lg:p-10">
-                <div className="flex items-center mb-6">
-                  <div className="flex">
-                    {[...Array(5)].map((_, i) => (
-                      <svg key={i} className="w-5 h-5 text-yellow-400 fill-current" viewBox="0 0 20 20">
-                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                      </svg>
-                    ))}
-                  </div>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              <article className="bg-gray-50 rounded-2xl p-8 border border-gray-100">
+                <div className="mb-8">
+                  <p className="text-gray-700 italic leading-relaxed text-lg text-balance">
+                    "Após 40 anos de experiência na área veterinária, posso garantir que os produtos COIMMA sempre estiveram presentes com resultados de primeira qualidade."
+                  </p>
                 </div>
-                <p className="text-lg leading-relaxed mb-6 text-gray-700">
-                  &quot;Após 40 anos de experiência na área veterinária, posso garantir que os produtos COIMMA sempre estiveram presentes com resultados de primeira qualidade.&quot;
-                </p>
-                <footer className="flex items-center">
-                  <div className="w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center mr-4">
-                    <span className="text-sm font-bold text-gray-600">WA</span>
+                <div className="flex items-center">
+                  <div className="w-12 h-12 bg-[#5c0a0a] rounded-full flex items-center justify-center text-white font-medium mr-4">
+                    WA
                   </div>
                   <div>
-                    <div className="font-semibold text-gray-900">Dr. Wander Baganha Azevedo</div>
-                    <div className="text-sm text-gray-600">Médico Veterinário</div>
+                    <h4 className="font-medium text-gray-900">Dr. Wander Baganha Azevedo</h4>
+                    <p className="text-sm text-gray-500">Médico Veterinário</p>
                   </div>
-                </footer>
-              </blockquote>
+                </div>
+              </article>
 
-              <blockquote className="bg-gray-50 rounded-2xl p-8 lg:p-10">
-                <div className="flex items-center mb-6">
-                  <div className="flex">
-                    {[...Array(5)].map((_, i) => (
-                      <svg key={i} className="w-5 h-5 text-yellow-400 fill-current" viewBox="0 0 20 20">
-                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                      </svg>
-                    ))}
-                  </div>
+              <article className="bg-gray-50 rounded-2xl p-8 border border-gray-100">
+                <div className="mb-8">
+                  <p className="text-gray-700 italic leading-relaxed text-lg text-balance">
+                    "Trabalho com a Coimma há mais de 25 anos. Aprovo e recomendo seus produtos a todos os pecuaristas que trabalham por um manejo mais racional."
+                  </p>
                 </div>
-                <p className="text-lg leading-relaxed mb-6 text-gray-700">
-                  &quot;Trabalho com a Coimma há mais de 25 anos. Aprovo e recomendo seus produtos a todos os pecuaristas que trabalham por um manejo mais racional.&quot;
-                </p>
-                <footer className="flex items-center">
-                  <div className="w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center mr-4">
-                    <span className="text-sm font-bold text-gray-600">GP</span>
+                <div className="flex items-center">
+                  <div className="w-12 h-12 bg-[#5c0a0a] rounded-full flex items-center justify-center text-white font-medium mr-4">
+                    GP
                   </div>
                   <div>
-                    <div className="font-semibold text-gray-900">Dr. Gilberto Andrade Pereira</div>
-                    <div className="text-sm text-gray-600">Médico veterinário, pecuarista e comerciante</div>
+                    <h4 className="font-medium text-gray-900">Dr. Gilberto Andrade Pereira</h4>
+                    <p className="text-sm text-gray-500">Médico veterinário, pecuarista e comerciante</p>
                   </div>
-                </footer>
-              </blockquote>
+                </div>
+              </article>
 
-              <blockquote className="bg-gray-50 rounded-2xl p-8 lg:p-10">
-                <div className="flex items-center mb-6">
-                  <div className="flex">
-                    {[...Array(5)].map((_, i) => (
-                      <svg key={i} className="w-5 h-5 text-yellow-400 fill-current" viewBox="0 0 20 20">
-                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                      </svg>
-                    ))}
-                  </div>
+              <article className="bg-gray-50 rounded-2xl p-8 border border-gray-100">
+                <div className="mb-8">
+                  <p className="text-gray-700 italic leading-relaxed text-lg text-balance">
+                    "Tenho mais de dez produtos da Coimma instalados e funcionando em minhas fazendas. Comprovei a qualidade e durabilidade desses equipamentos."
+                  </p>
                 </div>
-                <p className="text-lg leading-relaxed mb-6 text-gray-700">
-                  &quot;Tenho mais de dez produtos da Coimma instalados e funcionando em minhas fazendas. Comprovei a qualidade e durabilidade desses equipamentos.&quot;
-                </p>
-                <footer className="flex items-center">
-                  <div className="w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center mr-4">
-                    <span className="text-sm font-bold text-gray-600">AF</span>
+                <div className="flex items-center">
+                  <div className="w-12 h-12 bg-[#5c0a0a] rounded-full flex items-center justify-center text-white font-medium mr-4">
+                    AF
                   </div>
                   <div>
-                    <div className="font-semibold text-gray-900">Alexandre de Figueiredo Ferraz</div>
-                    <div className="text-sm text-gray-600">Empresário e pecuarista</div>
+                    <h4 className="font-medium text-gray-900">Alexandre de Figueiredo Ferraz</h4>
+                    <p className="text-sm text-gray-500">Empresário e pecuarista</p>
                   </div>
-                </footer>
-              </blockquote>
+                </div>
+              </article>
             </div>
           </div>
-        </section>
-        <Footer />
+        </motion.section>
       </main>
+      <Footer />
     </>
   );
 }
