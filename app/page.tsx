@@ -172,63 +172,6 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* Social Media Section */}
-        <section className="bg-white">
-          <div className="max-w-screen-xl mx-auto px-6 lg:px-8 py-24">
-            <div className="max-w-4xl mx-auto">
-              <div className="text-center mb-16">
-                <h2 className="text-4xl lg:text-5xl font-bold tracking-tight mb-6">@coimma</h2>
-                <div className="w-16 h-0.5 bg-gray-900 mx-auto"></div>
-              </div>
-
-              <article className="bg-gray-50 rounded-2xl p-8 lg:p-12">
-                <div className="prose prose-lg max-w-none">
-                  <p className="text-lg leading-relaxed mb-6">
-                    Hoje celebramos São Cristóvão, padroeiro dos viajantes, caminhoneiros e de todos que enfrentam longas jornadas pelas estradas do nosso país.
-                  </p>
-                  <p className="text-lg leading-relaxed mb-6">
-                    Na COIMMA, temos uma devoção especial a ele — porque sabemos que, por trás de cada entrega, cada equipamento e cada quilômetro percorrido, há vidas em movimento e sonhos sendo levados ao campo e à indústria.
-                  </p>
-                  <p className="text-lg leading-relaxed">
-                    Que São Cristóvão continue nos guiando com proteção, fé e força nas estradas da vida e do agro. Nossa gratidão a todos os motoristas que fazem a COIMMA chegar ainda mais longe!
-                  </p>
-                </div>
-              </article>
-            </div>
-          </div>
-        </section>
-
-        {/* Events Section */}
-        <section className="bg-gray-50">
-          <div className="max-w-screen-xl mx-auto px-6 lg:px-8 py-24">
-            <div className="max-w-4xl mx-auto">
-              <div className="text-center mb-16">
-                <h2 className="text-4xl lg:text-5xl font-bold tracking-tight text-balance mb-6">
-                  Presença na FEXPOSIV 2025
-                </h2>
-                <div className="w-16 h-0.5 bg-gray-900 mx-auto mb-6"></div>
-                <div className="inline-flex items-center px-4 py-2 bg-blue-100 text-blue-800 rounded-full text-sm font-medium uppercase tracking-wide">
-                  Eventos & Participações
-                </div>
-              </div>
-
-              <article className="bg-white rounded-2xl p-8 lg:p-12 shadow-sm">
-                <div className="prose prose-lg max-w-none">
-                  <p className="text-lg leading-relaxed mb-6">
-                    A COIMMA marcou presença na FEXPOSIV 2025, na Bolívia, representada pelo sr. José Dias Rossafa, que levou consigo conhecimento técnico e experiência acumulada durante anos de empresa.
-                  </p>
-                  <p className="text-lg leading-relaxed mb-6">
-                    Realizada em San Ignacio de Velasco, é uma das maiores feiras agropecuárias do país, reunindo tradição, genética de elite e grandes oportunidades de negócio.
-                  </p>
-                  <p className="text-lg leading-relaxed">
-                    Com mais de 21 mil visitantes e 200 expositores, o evento foi um verdadeiro encontro de inovação e pecuária de alto desempenho.
-                  </p>
-                </div>
-              </article>
-            </div>
-          </div>
-        </section>
-
         {/* Testimonials Section */}
         <section className="bg-white">
           <div className="max-w-screen-xl mx-auto px-6 lg:px-8 py-24 lg:py-32">
@@ -254,7 +197,7 @@ export default function HomePage() {
                   </div>
                 </div>
                 <p className="text-lg leading-relaxed mb-6 text-gray-700">
-                  "Após 40 anos de experiência na área veterinária, posso garantir que os produtos COIMMA sempre estiveram presentes com resultados de primeira qualidade."
+                  &quot;Após 40 anos de experiência na área veterinária, posso garantir que os produtos COIMMA sempre estiveram presentes com resultados de primeira qualidade.&quot;
                 </p>
                 <footer className="flex items-center">
                   <div className="w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center mr-4">
@@ -278,7 +221,7 @@ export default function HomePage() {
                   </div>
                 </div>
                 <p className="text-lg leading-relaxed mb-6 text-gray-700">
-                  "Trabalho com a Coimma há mais de 25 anos. Aprovo e recomendo seus produtos a todos os pecuaristas que trabalham por um manejo mais racional."
+                  &quot;Trabalho com a Coimma há mais de 25 anos. Aprovo e recomendo seus produtos a todos os pecuaristas que trabalham por um manejo mais racional.&quot;
                 </p>
                 <footer className="flex items-center">
                   <div className="w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center mr-4">
@@ -302,7 +245,7 @@ export default function HomePage() {
                   </div>
                 </div>
                 <p className="text-lg leading-relaxed mb-6 text-gray-700">
-                  "Tenho mais de dez produtos da Coimma instalados e funcionando em minhas fazendas. Comprovei a qualidade e durabilidade desses equipamentos."
+                  &quot;Tenho mais de dez produtos da Coimma instalados e funcionando em minhas fazendas. Comprovei a qualidade e durabilidade desses equipamentos.&quot;
                 </p>
                 <footer className="flex items-center">
                   <div className="w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center mr-4">
@@ -319,6 +262,6 @@ export default function HomePage() {
         </section>
         <Footer />
       </main>
-      );
-    </>)
+    </>
+  );
 }
