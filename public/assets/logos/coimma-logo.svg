@@ -1,0 +1,8 @@
+<svg width="512" height="256" viewBox="0 0 1024 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Oval border -->
+  <ellipse cx="512" cy="256" rx="480" ry="220" stroke="#FFFFFF" stroke-width="32" fill="none"/>
+  <ellipse cx="512" cy="256" rx="440" ry="190" fill="#000000"/>
+
+  <!-- COIMMA text -->
+  <text x="512" y="300" font-family="Arial, sans-serif" font-size="140" font-weight="bold" fill="#FFFFFF" text-anchor="middle">COIMMA</text>
+</svg>
